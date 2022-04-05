@@ -15,6 +15,8 @@
   "author": "GabrielHDZ",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.17.3",
+    "knex": "^1.0.4",
     "puppeteer": "^13.5.2"
   }
 }

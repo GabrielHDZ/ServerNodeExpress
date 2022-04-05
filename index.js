@@ -1,19 +1,14 @@
-const pupper=require('puppeteer');
+const {main}=require('./helpers/pupee.js');
+const express=require('express');
+const app=express();
+const PORT=3000;
 
-let main=async ()=>{
-    //inicializar navegador
-    const browser=await pupper.launch({headless:false});
-    //crear una nueva pestana de navegacion
-    const page=await browser.newPage();
-    //visitamos una direccion o sitio web.
-    //await page.goto('https://www.aliatuniversidades.com.mx/aliat/aviso-de-privacidad');
-    await page.goto('https://twitter.com/home');
-    //realizamos una accion con la info recuperada
-    await page.screenshot({path:'example.png'});
-    //await page.pdf({ path: 'aviso.pdf', format: 'a4' })
-
-    //cerrar el navegador
-    await browser.close();
-}
-
-main();
+app.get('/',(req,res)=>{
+    res.send('Hello world');
+})
+app.get('/puppeteer/',(req,res)=>{
+    res.send('Inicializo el servicio de web scrapping');
+})
+app.listen(PORT,()=>{
+    console.log('execute in port 3000')
+})
