@@ -3,6 +3,7 @@ const express=require('express');
 const path=require('path');
 const logger=require('morgan');
 const cookieParser = require('cookie-parser');
+const sesion=require('express-session');
 const PORT=3000;
 //creamos instancia de express
 const app=express();
@@ -30,10 +31,12 @@ const options = {
   }
 //app.use(express.static(path.join(__dirname,'public'),options));
 
+
 //rutas
 app.use('/',express.static(path.join(__dirname,'public'),options))
 app.use('/home',require('./routes/home.js'));
 app.use('/users',require('./routes/users.js'));
+app.use('/logout',require('./routes/logout.js'));
 
 //Rutas indefinidas
 app.use((req,res,next)=>{

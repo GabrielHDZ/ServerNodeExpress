@@ -1,12 +1,18 @@
 var express = require('express');
-const { route } = require('./home');
 var router = express.Router();
 
+router.param('id',(req,res,next,id)=>{
+  console.log('user acepted');
+  next();
+})
 /* GET users listing. */
-router.get('/', (req, res, next)=> {
+router.get('/us/:id', (req, res, next)=> {
   res.send('hello world in path users');
+  next();
 });
-router.post('/',(req,res)=>{
 
+router.get('/us/:id', (req, res) => {
+  console.log('and this matches too');
+  res.end()
 })
 module.exports = router;
