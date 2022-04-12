@@ -4,6 +4,7 @@ const path=require('path');
 const logger=require('morgan');
 const cookieParser = require('cookie-parser');
 const sesion=require('express-session');
+const body=require('body-parser');
 const PORT=3000;
 //creamos instancia de express
 const app=express();
