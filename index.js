@@ -30,13 +30,13 @@ const options = {
     redirect: true,
     setHeaders: (res, path, stat)=>res.set('x-timestamp', Date.now())
   }
-//app.use(express.static(path.join(__dirname,'public'),options));
+//app.use(express.static(path.join(__dirname,'public'),options));   
 
 
 //rutas
 app.use('/',express.static(path.join(__dirname,'public'),options))
 app.use('/home',require('./routes/home.js'));
-app.use('/users',require('./routes/users.js'));
+app.use('/users',require('./routes/routeUsers.js'));
 app.use('/logout',require('./routes/logout.js'));
 
 //Rutas indefinidas
