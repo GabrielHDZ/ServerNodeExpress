@@ -4,7 +4,7 @@ let urlencodedParser = require('body-parser').urlencoded({ extended: false })
 let path=require('path');
 let raiz=path.resolve()
 const { sucess,error } = require(path.join(raiz,'helpers/response'));
-const { userAdd} =require(path.join(raiz,'controllers/controllerUsers'));
+const { insert,search,searchByid} =require(path.join(raiz,'controllers/controllerUsers'));
 
 router.param('id',(req,res,next,id)=>{
   console.log('user acepted');
@@ -42,4 +42,21 @@ router.get('/async',(req,res)=>{
     const search=await Busqueda.find(data);
     sucess(req,res,'lista de datos',200,search); */
 });
+router.post('/listar',(req,res)=>{
+  search()
+  .then(results=>sucess(req,res,results))
+  .catch(e=>error(req,res,'error del servidor',500,e))
+})
+router.post('/listByid',(req,res)=>{
+  const {username}=req.body;
+  searchByid(username)
+  .then(results=>sucess(req,res,results))
+  .catch(e=>error(req,res,'error del servidor',500,e))
+})
+router.post('/insert',(req,res)=>{
+  const data=req.body;
+  insert(data)
+  .then(results=>sucess(req,res,results))
+  .catch(e=>error(req,res,'error del servidor',500,e))
+})
 module.exports = router;

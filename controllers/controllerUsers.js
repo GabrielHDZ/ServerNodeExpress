@@ -1,25 +1,44 @@
-
+const path =require('path')
+const root=path.resolve();
+const {main}=require(path.join(root,'helpers/dbMysqlConnect.js'));
 //agregar
-let userAdd=(user='none',age=0,pass='')=>{
+let insert=({username,nombre,age,genero,email})=>{
+    const Query=`INSERT INTO servernode2.users value (NULL,'${username}','${nombre}',${age},'${genero}','${email}')`;
     return new Promise((resolve,reject)=>{
-        if(!user || !age || !pass){
-            reject("no se han enviado todos los datos requeridos");
-        }
-        let dataUser={
-            user,
-            age,
-            password:pass,
-            createDate:new Date()
-        }
-        console.log(dataUser);
-        resolve('datos recibidos correctamente',dataUser);
+        main(Query,(error,results,fields)=>{
+            if(error){
+                reject(error);
+            }
+            resolve(results);
+        })
     })
     
 }
 //listar
+let search=()=>{
+    const query=`SELECT * FROM servernode2.users'`;
+    return new Promise((resolve,reject)=>{
+        main(query,(error,results,fields)=>{
+            if(error){
+                reject(error);
+            }
+            resolve(results);
+        });
+    })
+}
 
 //listar por id
-
+let searchByid=(username)=>{
+    const query=`SELECT * FROM servernode2.users WHERE username like '${username}'`;
+    return new Promise((resolve,reject)=>{
+        main(query,(error,results,fields)=>{
+            if(error){
+                reject(error);
+            }
+            resolve(results);
+        });
+    })
+}
 //acualizar todos los campos
 
 //actualizar solo campos especificos
@@ -27,4 +46,4 @@ let userAdd=(user='none',age=0,pass='')=>{
 //borrar usuario
 
 
-module.exports={userAdd};
+module.exports={search,searchByid,insert};
