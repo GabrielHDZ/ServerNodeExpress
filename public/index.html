@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/style.css">
     <title>ScrapperApp</title>
 </head>
 <body>
-    <h1>Welcome to ScrapperAPP</h1>
+    <header><a href="#" onclick="secActive(this)"><h1>ScrapperAPP</h1></a></header>
+    <nav>
+        <li><a href="#puppe" onclick="secActive(this)"><span>Scrapping</span></a></li>
+        <li><a href="#puppe" onclick="secActive(this)"><span>CodeQR</span></a></li>
+    </nav>
     
+    <p>
+        conjunto de herramientas para analisis y comparativas de informacion proporcionadas por diferentes paginas de internet
+    </p>
+
+
+    <section id="puppe" class="seccion">
+        <h1>Analisis de paginas web</h1>
+        <article>
+            <form action="/puppe" method="post">
+                <label>Pega tu url</label>
+                <input type="search" name="search">
+                <button type="submit">Analizar</button>
+            </form>
+            
+        </article>
+
+    </section>
+
+
     <a href="/home">Cookies</a>
     <a href="/logout">close</a>
     

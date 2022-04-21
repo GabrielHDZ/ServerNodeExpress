@@ -6,6 +6,9 @@ let raiz=path.resolve()
 const { sucess,error } = require(path.join(raiz,'helpers/response'));
 const { insert,search,searchByid} =require(path.join(raiz,'controllers/controllerUsers'));
 
+//prueba
+const { generate} =require(path.join(raiz,'models/modelUsers.js'));
+
 router.param('id',(req,res,next,id)=>{
   console.log('user acepted');
   next();
@@ -57,6 +60,15 @@ router.post('/insert',(req,res)=>{
   const data=req.body;
   insert(data)
   .then(results=>sucess(req,res,results))
+  .catch(e=>error(req,res,'error del servidor',500,e))
+})
+router.get('/qr',(req,res,next)=>{
+  generate('code madafaqa')
+  .then(code=>{
+    res.setHeader('Content-type','text/html')
+    res.write(`<img src='${code}'></img>`);
+    next();
+  })
   .catch(e=>error(req,res,'error del servidor',500,e))
 })
 module.exports = router;
