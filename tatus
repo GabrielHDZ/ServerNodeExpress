@@ -1,0 +1,97 @@
+[33mcommit b885901f3ec79241a854bd25c392eb8ab14408f0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Wed Apr 27 23:39:34 2022 -0500
+
+    update
+
+[33mcommit 13a00aee57331878128343a74c4bf5c445f1f835[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Tue Apr 26 18:28:05 2022 -0500
+
+    update
+
+[33mcommit ca7614e6aeb62c4b384cdd63211c3cd8519d987e[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Sun Apr 24 00:47:57 2022 -0500
+
+    more settings at puppeteer library
+
+[33mcommit 37a2532b536abe53a6ffcde7aa01691a41e54b47[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Thu Apr 21 23:53:05 2022 -0500
+
+    working in web scrapping
+
+[33mcommit cab9d3f2d1c41869959ed0db36168bed37e7d158[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Thu Apr 21 00:16:54 2022 -0500
+
+    route web scrapping
+
+[33mcommit ef8e5291f063df8984fc4b6d35a6770be1686921[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Sun Apr 17 00:35:08 2022 -0500
+
+    crud routes users with mysql
+
+[33mcommit 7f323ae4f406c15dc778a2c7cc9032353c98450f[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Wed Apr 13 21:04:28 2022 -0500
+
+    aplicando la arquitectura MVC
+
+[33mcommit 94833b54a6cacede0fd5410c326430c832ad5e22[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Wed Apr 13 01:30:47 2022 -0500
+
+    creacion de carpeta de controllers, vreacion de controllerusers y manejo de respuestas 200 y 400
+
+[33mcommit 9a965c11cd16089adf4bb21f509a5441f1fa6732[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Wed Apr 13 01:29:52 2022 -0500
+
+    asignando controllers y path resolve para ruta inicial
+
+[33mcommit 17cbea9fdf91f45c809f3ff06b273cfa5f40a6eb[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Tue Apr 12 01:26:45 2022 -0500
+
+    routes, params and module body-parser implement
+
+[33mcommit 29ca7b3e3eaca109fa96f0e3aa44c4f519aa5003[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Mon Apr 11 01:39:42 2022 -0500
+
+    cookies create and delete
+
+[33mcommit 91d979321e8987b9496e16dc14a92718bd097d69[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Wed Apr 6 22:57:21 2022 -0500
+
+    carpetas ordenadas
+    
+    se ordenaron las carpetas y se eliminaron modulos y dependencias innecesarias
+    
+    la estructura tambien ha quedado definida
+
+[33mcommit 6a569d1eaf7ff2c74c1ebdac7bb20860983365e1[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Wed Apr 6 22:25:09 2022 -0500
+
+    create stucture in project with express--create
+    
+    construyendi las bases y rutas basicas del sercer node
+
+[33mcommit 6b4432b390b7b5c1e7efb583a6aa98f0318f17c4[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Tue Apr 5 18:38:52 2022 -0500
+
+    agregamos express al proyecto
+    
+    instalacion pura y limpia
+
+[33mcommit 3561542f0a812bf5bdee5e01063a45ae396d8b4c[m
+Author: GabrielHDZ <gabrielhdz0102@gmail.com>
+Date:   Sat Apr 2 12:15:43 2022 -0600
+
+    basic
