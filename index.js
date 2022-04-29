@@ -1,4 +1,3 @@
-//const {main}=require('./helpers/pupee.js');
 const express=require('express');
 const path=require('path');
 const logger=require('morgan');
@@ -30,8 +29,6 @@ const options = {
     redirect: true,
     setHeaders: (res, path, stat)=>res.set('x-timestamp', Date.now())
   }
-//app.use(express.static(path.join(__dirname,'public'),options));   
-
 
 //rutas
 app.use('/',express.static(path.join(__dirname,'public'),options))

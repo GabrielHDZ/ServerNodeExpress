@@ -10,7 +10,11 @@ const secActive=(rep)=>{
     if(seccion){
         document.getElementById(seccion).style.display='block';
     }
+    if(seccion==='database'){
+        
+    }
 }
+
 
 
 /* document.querySelector(".cook").addEventListener("click", function(event){

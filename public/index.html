@@ -12,6 +12,7 @@
     <nav>
         <li><a href="#puppe" onclick="secActive(this)"><span>Scrapping</span></a></li>
         <li><a href="#puppe" onclick="secActive(this)"><span>CodeQR</span></a></li>
+        <li><a href="#database" onclick="secActive(this)"><span>Database Manipulation</span></a></li>
     </nav>
     
     <p>
@@ -30,6 +31,19 @@
             
         </article>
 
+    </section>
+    <section id="database" class="seccion">
+        <h1>Database local</h1>
+        <ul id="listaTablas">
+            <form action="/database">
+                <label>Usuario</label>
+                <input type="text" name="user">
+                <label>Password</label>
+                <input type="password" name="pass">
+                <button type="submit">Conectarse</button>
+            </form>
+
+        </ul>
     </section>
 
 
