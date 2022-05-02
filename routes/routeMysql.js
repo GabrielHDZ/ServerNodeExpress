@@ -13,8 +13,17 @@ router.route('/')
         .then(m=>sucess(req,res,m))
         .catch(e=>error(req,res,e));
     });
-router.route('/:id')
-    .get()
+router.route('/:username')
+    .get((req,res,next)=>{
+        console.log(req.params.username)
+        if(!req.params.username){
+            return error(req,res,'falta dato',400,'no se recibieron datos en el header')
+        }
+        Cmysql.main(`SELECT * FROM servernode2.users WHERE username like '${req.params.username}';`,(e,r,f)=>{
+            if(e){error(req,res,e,500)}
+            sucess(req,res,r,200,"data received");
+        })
+    })
     .put()
     .delete();
 
