@@ -19,10 +19,9 @@ router.route('/:username')
         if(!req.params.username){
             return error(req,res,'falta dato',400,'no se recibieron datos en el header')
         }
-        Cmysql.main(`SELECT * FROM servernode2.users WHERE username like '${req.params.username}';`,(e,r,f)=>{
-            if(e){error(req,res,e,500)}
-            sucess(req,res,r,200,"data received");
-        })
+        Cmysql.userByid(req.params.username)
+        .then(m=>sucess(req,res,m,200,"execute sucessfull"))
+        .catch(e=>error(req,res,e,500,"error en la ejecucion de la consulta sql"))
     })
     .put()
     .delete();
