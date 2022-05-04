@@ -8,8 +8,19 @@ exports.existUser=async(req)=>{
     return response;
 }
 
-exports.userByid=async(username,callback)=>{
+exports.userByid=async(username)=>{
     let sentencia=`SELECT * FROM servernode2.users WHERE username like '${username}';`;
-    let query=await main(sentencia);
-    return query;
+    let response="";
+    try {
+        await main(sentencia,(error,result)=>{
+            if(error){
+                throw new Error('exxx')
+            }
+            response=result;
+        });
+        return response;
+    } catch (error) {
+        console.log('error cacheado',error)
+    }
+    
 }
