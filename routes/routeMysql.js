@@ -1,7 +1,7 @@
 let router = require('express').Router();
 let path=require('path');
 let raiz=path.resolve()
-const { sucess,error } = require(path.join(raiz,'helpers/response'));
+const respuesta = require(path.join(raiz,'helpers/response'));
 const Cmysql= require(path.join(raiz,'/controllers/controllerMysql'));
 
 router.route('/')
@@ -15,13 +15,16 @@ router.route('/')
     });
 router.route('/:username')
     .get((req,res,next)=>{
-        console.log(req.params.username)
         if(!req.params.username){
-            return error(req,res,'falta dato',400,'no se recibieron datos en el header')
+            return respuesta.error(req,res,'falta dato',400,'no se recibieron datos en el header')
         }
-        Cmysql.userByid(req.params.username)
-        .then(m=>sucess(req,res,m,200,"execute sucessfull"))
-        .catch(e=>error(req,res,e,500,"error en la ejecucion de la consulta sql"))
+        Cmysql.userByid(req.params.username,(error,result)=>{
+            if(error){
+                respuesta.error(req,res,'error de servidor',500,error); 
+                return null;
+            }
+            respuesta.sucess(req,res,'falta formatear los resultados',200,result)
+        });
     })
     .put()
     .delete();
