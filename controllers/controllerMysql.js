@@ -12,7 +12,7 @@ exports.userByid=async(username,callback)=>{
     let sentencia=`SELECT * FROM servernode2.users WHERE username like '${username}';`;
     try {
         await main(sentencia,(error,result)=>{
-            if(error) callback(error)
+            if(error) return callback(error)
             callback(error,result)
         });
     } catch (error) {

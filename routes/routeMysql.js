@@ -14,14 +14,13 @@ router.route('/')
         .catch(e=>error(req,res,e));
     });
 router.route('/:username')
-    .get((req,res,next)=>{
+    .get((req,res)=>{
         if(!req.params.username){
             return respuesta.error(req,res,'falta dato',400,'no se recibieron datos en el header')
         }
         Cmysql.userByid(req.params.username,(error,result)=>{
             if(error){
-                respuesta.error(req,res,'error de servidor',500,error); 
-                return null;
+                return respuesta.error(req,res,'error de servidor',500,error); 
             }
             respuesta.sucess(req,res,'falta formatear los resultados',200,result)
         });
