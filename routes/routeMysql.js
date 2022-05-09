@@ -6,12 +6,12 @@ const Cmysql= require(path.join(raiz,'/controllers/controllerMysql'));
 
 router.route('/')
     .get((req,res,next)=>{
-        sucess(req,res);
+        respuesta.sucess(req,res);
     })
     .post((req,res,next)=>{
         Cmysql.existUser(req)
-        .then(m=>sucess(req,res,m))
-        .catch(e=>error(req,res,e));
+        .then(m=>respuesta.sucess(req,res,m))
+        .catch(e=>respuesta.error(req,res,e));
     });
 router.route('/:username')
     .get((req,res)=>{

@@ -33,17 +33,27 @@
 
     </section>
     <section id="database" class="seccion">
-        <h1>Database local</h1>
-        <ul id="listaTablas">
-            <form action="/database">
-                <label>Usuario</label>
-                <input type="text" name="user">
-                <label>Password</label>
-                <input type="password" name="pass">
-                <button type="submit">Conectarse</button>
-            </form>
+        <table class="greyGridTable">
+            <thead>
+                <tr>
+                    <th>Url</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Params</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="/mysql"><span>/Mysql</span></a></td>
+                    <td>GET</td>
+                    <td><p>Route build for the manipulation to the mysql database with access administrator</p></td>
+                    <td>access with format JSON params user and password. </td>
+                    <td></td>
+                </tr>
+            </tbody>
 
-        </ul>
+        </table>
     </section>
 
 
