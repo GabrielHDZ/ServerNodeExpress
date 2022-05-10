@@ -13,17 +13,20 @@ router.route('/')
         .then(m=>respuesta.sucess(req,res,m))
         .catch(e=>respuesta.error(req,res,e));
     });
-router.route('/:username')
+router.route('/master')
     .get((req,res)=>{
-        if(!req.params.username){
-            return respuesta.error(req,res,'falta dato',400,'no se recibieron datos en el header')
-        }
-        Cmysql.userByid(req.params.username,(error,result)=>{
+        Cmysql.searchAdmins((error,result)=>{
             if(error){
                 return respuesta.error(req,res,'error de servidor',500,error); 
             }
             respuesta.sucess(req,res,'falta formatear los resultados',200,result)
         });
+    })
+    .post((req,res)=>{
+        if(!req.body){
+            return respuesta.error(req,res,"se requieren datos",404,"no se recibieron datos en el cuerpo de la peticion, es necesario el envio de dichos datos");
+        }
+
     })
     .put()
     .delete();
