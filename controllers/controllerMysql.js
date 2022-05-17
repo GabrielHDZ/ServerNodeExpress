@@ -8,7 +8,7 @@ exports.existUser=async(req)=>{
     return response;
 }
 exports.searchAdmins=async(callback)=>{
-    let sentencia=`SELECT * FROM servernode2.admins;`;
+    let sentencia=`SELECT * FROM servernode2.administracion;`;
     try {
         await modelAdministrators(sentencia,(error,result)=>{
             if(error) return callback(error);

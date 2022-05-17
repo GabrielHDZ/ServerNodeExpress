@@ -19,7 +19,7 @@ router.route('/master')
             if(error){
                 return respuesta.error(req,res,'error de servidor',500,error); 
             }
-            respuesta.sucess(req,res,'falta formatear los resultados',200,result)
+            respuesta.sucess(req,res,result,200,"todo bien");
         });
     })
     .post((req,res)=>{
@@ -30,5 +30,18 @@ router.route('/master')
     })
     .put()
     .delete();
+
+router.route('/signin')
+.post((req,res)=>{
+
+});
+router.route('/signup')
+.post((req,res)=>{
+
+});
+router.route('/signout')
+.post((req,res)=>{
+
+});
 
 module.exports=router;
