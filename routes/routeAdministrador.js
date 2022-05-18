@@ -1,8 +1,11 @@
+/*   
+--Administracion de las rutas asignadas al usuario vendedor
+*/
 let router = require('express').Router();
 let path=require('path');
 let raiz=path.resolve()
-const respuesta = require(path.join(raiz,'helpers/response'));
-const Cmysql= require(path.join(raiz,'/controllers/controllerMysql'));
+const respuesta = require('../helpers/response');
+const Cmysql= require(path.join('../controllers/controllerAdministrador'));
 
 router.route('/')
     .get((req,res,next)=>{
@@ -30,15 +33,17 @@ router.route('/master')
     })
     .put()
     .delete();
-
+//INICIAR SESION EN CUENTA ADMNISTRADOR
 router.route('/signin')
 .post((req,res)=>{
 
 });
+//CREAR CUENTA ADMINISTRADOR
 router.route('/signup')
 .post((req,res)=>{
 
 });
+//CERRAR SESION EN CUENTA ADMINISTRADOR
 router.route('/signout')
 .post((req,res)=>{
 
