@@ -36,7 +36,7 @@ app.use('/home',require('./routes/home.js'));
 app.use('/users',require('./routes/routeUsers.js'));
 app.use('/logout',require('./routes/logout.js'));
 app.use('/puppe',require('./routes/routePuppe.js'));
-app.use('/mysql',require('./routes/routeMysql.js'));
+app.use('/administrador',require('./routes/routeAdministrador.js'));
 
 //Rutas indefinidas
 app.use((req,res,next)=>{
