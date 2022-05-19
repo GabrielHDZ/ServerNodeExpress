@@ -26,4 +26,15 @@ let selectCount= async(query,callback)=>{
     }
 }
 
-module.exports={selectCount,selectFromSimple}
+let insertInto= async(query,callback)=>{
+    try {
+        await main(query,(error,results)=>{
+            if(error) return callback(error);
+            callback(null,results);
+        })
+    } catch (error) {
+        
+    }
+}
+
+module.exports={selectCount,selectFromSimple,insertInto}

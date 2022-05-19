@@ -36,7 +36,7 @@ router.route('/signin')
             return respuesta.error(req,res,"no se recibieron datos",404,"no se recibieron datos en el body");
         }
         administrador.signinAdmin(req.body,(error,msg)=>{
-            if(error) return respuesta.error(req,res,"informacion no registrada",404,"informacion recibida, no existe en los registros");
+            if(error) return respuesta.error(req,res,"informacion no registrada",404,error);
             return respuesta.sucess(req,res,"ingresando...",200,`informacion valida, ${msg}`);
         });
     });
@@ -44,7 +44,10 @@ router.route('/signin')
 router.route('/signup')
     .post((req,res)=>{
         if(!req.body) return respuesta.error(req,res,"el formulario no se recibio completo",404,"la informacion en el body esta incompleta");
-       
+        administrador.signupAdmin(req.body,(error,msg)=>{
+            if(error) return respuesta.error(req,res,"error de servidor",500,error);
+            return respuesta.sucess(req,res,"cuenta creada, inicie sesion",200,"cuenta creada correctamente");
+        })
     });
 //CERRAR SESION EN CUENTA ADMINISTRADOR
 router.route('/signout')

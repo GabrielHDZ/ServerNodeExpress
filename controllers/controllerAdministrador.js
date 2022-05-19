@@ -38,5 +38,13 @@ exports.signinAdmin=async({username,pass},callback)=>{
     }
 }
 exports.signupAdmin=async({username,pass,tipe},callback)=>{
-    let sentencia=`insert into servernode2.administracion`
+    let sentencia=`insert into servernode2.administracion value (null,"${username}","${pass}",${tipe});`;
+    try {
+        await modelo.insertInto(sentencia,(error,result)=>{
+            if(error){return callback(error)}
+            callback(null,result);
+        })
+    } catch (error) {
+        console.log(error);
+    }
 }
