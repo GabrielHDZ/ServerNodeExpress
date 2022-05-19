@@ -2,6 +2,7 @@ let path=require('path');
 let raiz=path.resolve();
 const {conexion,main}=require(path.join(raiz,'/helpers/dbMysqlConnect.js'));
 const modelo = require('../models/modelAdministrador')
+const bcry=require('../helpers/bcrypt');
 
 exports.existUser=async(req)=>{
     let response=await conexion(req.body);
@@ -18,19 +19,24 @@ exports.searchAdmins=async(callback)=>{
 }
 
 exports.signinAdmin=async({username,pass},callback)=>{
-    //recibimos usuario y administrador y evaluamos el usuarios y password
-
-    //uso de la libreria bycript para evaluar la password
-
-    //creacion de la consulta sql qu devuelve el numero de veces que existe es usuario y la password
-    let sentencia=`SELECT count(*) FROM servernode2.administracion WHERE username like "${username}" && pass like "${pass}";`;
+    let sentencia=`SELECT count(*) FROM servernode2.administracion WHERE username like "${username}";`;
     try {
         await modelo.selectCount(sentencia,(error,result)=>{
             console.log(typeof(result));
             if(error){return callback(error)}
             else{
                 if(result['count(*)'] !== 1){return callback('error generado')}
-                else{callback(error,result['count(*)'])}
+                else{
+                    let comparepass=`SELECT pass FROM servernode2.administracion WHERE username like "${username}";`;
+                    modelo.selectFromSimple(comparepass,async(err,response)=>{
+                        if(err) return callback('error');
+                        let hash=response['pass'];
+                        let compare=await bcry.compareHash(pass,hash);
+                        if(compare===true){return callback(null,'accceso permitido')}
+                        else{return callback('pass incorrecta')}
+                    })
+                    //callback(error,result['count(*)'])
+                }
             }      
         });
     } catch (error) {
@@ -38,8 +44,10 @@ exports.signinAdmin=async({username,pass},callback)=>{
     }
 }
 exports.signupAdmin=async({username,pass,tipe},callback)=>{
-    let sentencia=`insert into servernode2.administracion value (null,"${username}","${pass}",${tipe});`;
     try {
+        //create hash for pass with bcrypt
+        let code=await bcry.createHash(pass);
+        sentencia=`insert into servernode2.administracion value (null,"${username}","${code}",${tipe});`;
         await modelo.insertInto(sentencia,(error,result)=>{
             if(error){return callback(error)}
             callback(null,result);

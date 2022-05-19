@@ -1,16 +1,11 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-let cc;
-let createHash=(myPlaintextPassword)=>{
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-        if(err) return null
-        bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-            if(err) return null
-            cc=hash;
-        });
-    });
-}
-createHash("hhas")
-setTimeout(()=>{console.log(cc);},4000);
+const salt=bcrypt.genSaltSync(saltRounds);
+let createHash=(myPlaintextPassword)=>bcrypt.hashSync(myPlaintextPassword, salt);
 
-module.exports={createHash}
+let compareHash=(value,hash)=>{bcrypt.compareSync(value,hash)}
+
+/* createHash('ndune')
+.then(r=>console.log(r))
+ */
+module.exports={createHash,compareHash}
