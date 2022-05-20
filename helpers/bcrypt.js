@@ -3,7 +3,7 @@ const saltRounds = 10;
 const salt=bcrypt.genSaltSync(saltRounds);
 let createHash=(myPlaintextPassword)=>bcrypt.hashSync(myPlaintextPassword, salt);
 
-let compareHash=(value,hash)=>{bcrypt.compareSync(value,hash)}
+let compareHash=(value,hash)=>{return bcrypt.compareSync(value,hash)}
 
 /* createHash('ndune')
 .then(r=>console.log(r))

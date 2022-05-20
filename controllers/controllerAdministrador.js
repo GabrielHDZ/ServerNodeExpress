@@ -16,6 +16,29 @@ exports.searchAdmins=async(callback)=>{
         .catch(error=>{return callback(error)});
     } catch (error) {return callback(error)}
 }
+async function evaluate(pass,hash){
+    try {
+        //compare password inserted and hash recuperate in database
+        let code=await bcry.compareHash(pass,hash);
+        return code;
+    } catch (error) {
+        console.log(error);
+    }
+}
+async function returnPass(username,pass,callback){
+    let sentencia=`SELECT pass FROM servernode2.administracion WHERE username like "${username}";`;
+    try {
+        modelo.selectFromSimple(sentencia)
+        .then(msg=>{
+            let hashRecuperate=msg[0]["pass"];
+            let isEquals=evaluate(pass,hashRecuperate);
+            if(isEquals===true) return callback(null,"match exact");
+            return callback('match no exactly');
+        })
+        .catch(e=>console.log(e))
+    } catch (error) {return error}
+}
+
 
 exports.signinAdmin=async({username,pass},callback)=>{
     let sentencia=`SELECT count(*) FROM servernode2.administracion WHERE username like "${username}";`;
@@ -25,7 +48,7 @@ exports.signinAdmin=async({username,pass},callback)=>{
             else{
                 if(result['count(*)'] !== 1){return callback('error generado')}
                 else{
-                    callback(error,result['count(*)'])
+                    returnPass(username,pass,callback);
                 }
             }      
         });
