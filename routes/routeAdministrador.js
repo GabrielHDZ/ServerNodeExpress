@@ -16,9 +16,9 @@ router.route('/')
     });
 router.route('/master')
     .get((req,res)=>{
-        administrador.searchAdmins((error,result)=>{
-            if(error) return respuesta.error(req,res,'error de servidor',500,error); 
-            respuesta.sucess(req,res,result,200,"todo bien");
+        administrador.searchAdmins((error,msg)=>{
+            if(error) return respuesta.error(req,res,'error de servidor',500,error);
+            return respuesta.sucess(req,res,msg,200,"todo bien")
         });
     })
     .post((req,res)=>{
