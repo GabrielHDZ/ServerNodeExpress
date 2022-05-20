@@ -1,40 +1,20 @@
-const {main} =require('../helpers/dbMysqlConnect');
+const conector=require('../helpers/dbMysqlConnect');
 
-let selectFromSimple= async(query,callback)=>{
-    try {
-        await main(query,(error,results)=>{
-            if(error) return callback(error);
-            //seleccionamos la propiedad deseada del array que nos responde la consulta a la bd
-            callback(null,results)
 
-        })
-    } catch (error) {
-        console.error('error capturado desde model',error)
-    }
+let selectFromSimple=(query)=>{
+    return conector.main(query);
 }
 
 let selectCount= async(query,callback)=>{
-    try {
-        await main(query,(error,results)=>{
-            if(error) return callback(error);
-            //seleccionamos la propiedad deseada del array que nos responde la consulta a la bd
-            callback(null,results[0])
-
-        })
-    } catch (error) {
-        console.error('error capturado desde model',error)
-    }
+        await conector.main(query)
+        .then(results=>{return callback(null,results[0])})
+        .catch(error=>{return callback(error)})
 }
 
-let insertInto= async(query,callback)=>{
-    try {
-        await main(query,(error,results)=>{
-            if(error) return callback(error);
-            callback(null,results);
-        })
-    } catch (error) {
-        
-    }
+let insertInto= (query)=>{
+    return conector.main(query);
+
 }
 
-module.exports={selectCount,selectFromSimple,insertInto}
+
+module.exports={selectCount,insertInto,selectFromSimple}
