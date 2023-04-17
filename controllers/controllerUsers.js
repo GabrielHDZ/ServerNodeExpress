@@ -1,7 +1,7 @@
 const path =require('path')
 const root=path.resolve();
 const {main}=require(path.join(root,'helpers/dbMysqlConnect.js'));
-//agregar
+//add
 let insert=({username,nombre,age,genero,email})=>{
     const Query=`INSERT INTO servernode2.users value (NULL,'${username}','${nombre}',${age},'${genero}','${email}')`;
     return new Promise((resolve,reject)=>{
@@ -14,7 +14,7 @@ let insert=({username,nombre,age,genero,email})=>{
     })
     
 }
-//listar
+//search
 let search=()=>{
     const query=`SELECT * FROM servernode2.users'`;
     return new Promise((resolve,reject)=>{
